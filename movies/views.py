@@ -70,7 +70,7 @@ def delete(request, movie_id):
         movie_name =AT.get(movie_id)['fields'].get('Name')
         # note before AT.delete, request doesn't have anything =>we used AT.get(movie_id) instead of reponse['fields']
         response = AT.delete(movie_id)
-        # notify on delete, here we use the movie_name variable whic halready have the movie name
+        # notify on delete, here we use the movie_name variable which already have the movie name.
         messages.warning(request, 'Deleted movie: {}'.format(movie_name))
     except Exception as e:
         messages.warning(request, 'Got an error when trying to delete a movie: {}'.format(e))
