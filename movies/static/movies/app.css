@@ -147,8 +147,8 @@ body::before {
 .movies__item-star {
     z-index: 9998;
     color: #FAAA2B;
-    top: 20%;
-    font-size: 4rem;
+    top: 13%;
+    font-size: 3rem;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -177,15 +177,27 @@ body::before {
 }
 
 .movies__item-rating {
-    z-index: 9998;
-    font-size: 5rem;
+    z-index: 9997;
+    font-size: 3rem;
     font-family: Anton, sans-serif;
     position: absolute;
     transform: translateX(-50%);
     left: 50%;
-    top: 30%;
+    top: 20%;
     color: white;
 }
+
+.movies__item-rank {
+    z-index: 9998;
+    font-size: 1.5rem;
+    font-family: Anton, sans-serif;
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translateX(-50%);
+    color: white;
+}
+
 
 .movies__item-expander {
     font-weight: bold;

@@ -1,5 +1,5 @@
 function modal() {
-    $("#modal-trigger").animatedModal({
+    $("#modal-trigger").Modal({
         modalTarget:'js-modal',
         animatedIn:'lightSpeedIn',
         animatedOut:'bounceOutDown',
@@ -25,12 +25,14 @@ function main() {
         $(this).find('.movies__item-image').css({"filter": "brightness(20%)"});
         $(this).find('.movies__item-star').toggleClass('hide');
         $(this).find('.movies__item-rating').toggleClass('hide');
+        $(this).find('.movies__item-rank').toggleClass('hide');
         $(this).find('.movies__item-expander').toggleClass('hide');
         $(this).find('.movies__item-delete-button').toggleClass('hide');
     }, function() {
         $(this).find('.movies__item-image').css({"filter": "brightness(100%)"});
         $(this).find('.movies__item-star').toggleClass('hide');
         $(this).find('.movies__item-rating').toggleClass('hide');
+        $(this).find('.movies__item-rank').toggleClass('hide');
         $(this).find('.movies__item-expander').toggleClass('hide');
         $(this).find('.movies__item-delete-button').toggleClass('hide');
     });

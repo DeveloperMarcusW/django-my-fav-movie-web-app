@@ -9,6 +9,7 @@
 				<div class="movies__item full-width">
 					<i class="movies__item-star fas fa-star hide"></i>
                     <p class="movies__item-rating hide">{{movie.fields.Rating}}/10</p>
+                    <p class="movies__item-rank hide">Ranked# {{ movie.fields.Ranking }} of {{search_result|length}}</p>
                     <img src="{{ movie.fields.Pictures.0.url }}" alt="" class="movies__item-image" />
 					<div class="movies__item-title">
 						<p>{{ movie.fields.Notes }}</p>

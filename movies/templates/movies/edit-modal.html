@@ -23,6 +23,12 @@
 					</div>
 
                     <div class="form-group">
+						<label for="editRank">Rank</label>
+                        	<input type="number" class="form-control" id="editRank" placeholder= "1-{{search_result|length}}" name="rank" value={{ movie.fields.Ranking }} min="1" max={{search_result|length}} required>
+					</div>
+
+
+                    <div class="form-group">
                     	<label for="editNotes">Notes</label>
                         	<textarea id="editNotes" class="form-control" placeholder="Add notes" name="notes" >{{ movie.fields.Notes}}</textarea>
                     </div>

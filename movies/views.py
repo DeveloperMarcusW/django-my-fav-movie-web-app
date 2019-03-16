@@ -17,7 +17,7 @@ def home_page(request):
     user_query = str(request.GET.get('query', ''))
     # use the airtable python wrapper get_all and formula
     # FIND(1st arg user query, 2nd arg API search) {name} is name field in the dictionary?
-    search_result = AT.get_all(formula="FIND('" + user_query.lower() + "', LOWER({Name}))")
+    search_result = AT.get_all(sort=[('Ranking', 'asc')], formula="FIND('" + user_query.lower() + "', LOWER({Name}))")
     # send result to front end, generally use a context dictionary, key-value pair
     # name the key as 'search_result'
     # context variable: store the search result in the value of the dictionary, name the key search_result
@@ -34,7 +34,8 @@ def create(request):
             #Pictures is a list
             'Pictures': [{'url': request.POST.get('url') or 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg'}],
             'Rating': int(request.POST.get('rating')),
-            'Notes': request.POST.get('notes')
+            'Notes': request.POST.get('notes'),
+            'Ranking': int(request.POST.get('rank'))
         }
         # when the insert function is actinoed, there will be an respnse to show us whatit's done
         # we can store the response in a variable
@@ -53,14 +54,15 @@ def edit(request, movie_id):
             'Name': request.POST.get('name'),
             'Pictures': [{'url': request.POST.get('url') or 'https://www.freeiconspng.com/uploads/no-image-icon-23.jpg'}],
             'Rating': int(request.POST.get('rating')),
-            'Notes': request.POST.get('notes')
+            'Notes': request.POST.get('notes'),
+            'Ranking': int(request.POST.get('rank'))
         }
         try:
             response = AT.update(movie_id, data)
             # notify on update
             messages.success(request, 'Updated movie: {}'.format(response['fields'].get('Name')))
         except Exception as e:
-            messages.warning(request, 'Got an error when trying to update a mvoie: {}'.format(e))
+            messages.warning(request, 'Got an error when trying to update a movie: {}'.format(e))
     return redirect('/')
 
 def delete(request, movie_id):
